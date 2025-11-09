@@ -1,0 +1,17 @@
+---
+date: 2025-11-09
+categories: [wissenschaft]
+---
+
+### 🔬 Wissenschaft & Forschung
+
+Im Bereich der Materialwissenschaft und Quantenphysik gibt es bedeutende Fortschritte. Wissenschaftler am MIT haben direkte Beweise für unkonventionelle Supraleitung in Graphen entdeckt, was einen wichtigen Schritt in Richtung Raumtemperatur-Supraleiter bedeuten könnte (1). Ergänzend dazu wurde eine unerwartete Quantenoszillation in einem Isolatormaterial nachgewiesen, was bisherige physikalische Annahmen in Frage stellt und auf eine neue Dualität hindeutet, bei der Materialien gleichzeitig als Metalle und Isolatoren agieren könnten (2). Diese Grundlagenforschung wird durch technologische Innovationen wie einen neu entwickelten, handtellergroßen Kurzpulslaser ergänzt, der mit bis zu 80 % Effizienz arbeitet und neue Möglichkeiten für die Medizin und Quantenwissenschaft eröffnet (3).
+
+Auch die Astrophysik stellt grundlegende Theorien auf den Prüfstand. Forscher nutzen Simulationen von Schwarzen Löchern, um Einsteins Relativitätstheorie herauszufordern, wobei zukünftige Teleskopbilder entscheidende Daten liefern sollen (4). Parallel zu diesen theoretischen Überlegungen treibt der private Sektor die Raumfahrt voran: Blue Origin hat angekündigt, die NASA mit neuen Ideen aktiv dabei zu unterstützen, die nächste bemannte Mondlandung zu beschleunigen (5).
+
+In der Biotechnologie und Medizintechnik werden ebenfalls transformative Fortschritte erzielt. Eine experimentelle Gentherapie zeigt vielversprechende Ergebnisse bei der Halbierung des Cholesterinspiegels und könnte die Behandlung von Herzkrankheiten revolutionieren (6). Dies korrespondiert mit der Entdeckung, dass die DNA-Struktur selbst chemische Reaktionen lenken kann, was eine umweltfreundlichere und effizientere Herstellung von Medikamenten ermöglichen könnte (7). Weitere Innovationen umfassen die Identifizierung von speziellen Immunzellen im Gehirn, die den Verlauf von Alzheimer verlangsamen könnten (8), sowie eine neue Laserbehandlung, die das Fortschreiten von Makuladegeneration und damit verbundener Erblindung aufhalten soll (9).
+
+Im Umweltbereich kommen neue Technologien zum Schutz von Ökosystemen zum Einsatz, während Studien gleichzeitig auf Risiken durch etablierte Chemikalien hinweisen. Ein neuartiger eDNA-Test ermöglicht den Nachweis gefährdeter Hammerhaie allein durch genetische Spuren im Meerwasser, was den Schutz der scheuen Tiere erheblich vereinfachen könnte (10). Gleichzeitig warnt eine Langzeitstudie vor den weltweit am häufigsten eingesetzten Pestiziden, den Neonicotinoiden, die mit Schäden an der männlichen Reproduktionsgesundheit in Verbindung gebracht werden (11).
+
+##### Quellen: [1](https://www.sciencedaily.com/releases/2025/11/251108014019.htm) - [2](https://www.sciencedaily.com/releases/2025/11/251108083908.htm) - [3](https://www.sciencedaily.com/releases/2025/11/251108083854.htm) - [4](https://www.sciencedaily.com/releases/2025/11/251108014022.htm) - [5](https://arstechnica.com/space/2025/11/blue-origin-will-move-heaven-and-earth-to-help-nasa-reach-the-moon-faster-ceo-says/) - [6](https://www.wired.com/story/a-gene-editing-therapy-cut-cholesterol-levels-by-half/) - [7](https://www.sciencedaily.com/releases/2025/11/251108083914.htm) - [8](https://www.sciencedaily.com/releases/2025/11/251108083902.htm) - [9](https://www.sciencedaily.com/releases/2025/11/251108083906.htm) - [10](https://www.sciencedaily.com/releases/2025/11/251108083904.htm) - [11](https://www.sciencedaily.com/releases/2025/11/251108083900.htm)
+

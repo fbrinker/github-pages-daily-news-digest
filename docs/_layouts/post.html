@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  {% include header.html %}
+
+  <nav class="floating-nav" id="floating-nav">
+    <button class="floating-menu-toggle" id="floating-menu-toggle" aria-label="Inhaltsverzeichnis öffnen">
+      <span>Inhalt</span>
+      <span class="toggle-icon">▼</span>
+    </button>
+    <ul id="toc-list" class="toc-list"></ul>
+  </nav>
+
+  <main class="post-content">
+    <article>
+      <header class="post-header">
+        <h1>{{ page.title }}</h1>
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d. %B %Y" }}</time>
+      </header>
+
+      <div class="post-body">
+        {{ content }}
+      </div>
+    </article>
+  </main>
+
+  {% include footer.html %}
+
+  <script>
+    // Inhaltsverzeichnis automatisch generieren und in Navigation einfügen
+    document.addEventListener('DOMContentLoaded', function() {
+      const postBody = document.querySelector('.post-body');
+      if (!postBody) return;
+
+      const headings = postBody.querySelectorAll('h3');
+      const tocList = document.getElementById('toc-list');
+
+      if (headings.length === 0) {
+        // Keine Überschriften gefunden, Navigation ausblenden
+        const floatingNav = document.getElementById('floating-nav');
+        if (floatingNav) floatingNav.style.display = 'none';
+        return;
+      }
+
+      // Funktion zum Filtern: Nur erlaubte Zeichen behalten
+      function filterAllowedChars(text) {
+        // Erlaubt: Buchstaben (inkl. Umlaute), Zahlen, Leerzeichen, gängige Satzzeichen
+        // Pattern erlaubt Unicode-Buchstaben, Zahlen, Leerzeichen und Satzzeichen
+        return text.replace(/[^\p{L}\p{N}\s\-.,:;!?()&]/gu, '').trim();
+      }
+
+      headings.forEach(function(heading) {
+        // ID für die Überschrift generieren
+        let text = heading.textContent.trim();
+        // Nur erlaubte Zeichen behalten (Buchstaben, Zahlen, Leerzeichen, Satzzeichen)
+        const filteredText = filterAllowedChars(text);
+
+        let id = filteredText.toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/&/g, 'und')
+          .replace(/[,.:!?()]/g, '')
+          .replace(/--+/g, '-')
+          .replace(/^-|-$/g, '');
+
+        // Eindeutige ID sicherstellen
+        let uniqueId = id;
+        let counter = 1;
+        while (document.getElementById(uniqueId)) {
+          uniqueId = id + '-' + counter;
+          counter++;
+        }
+
+        heading.id = uniqueId;
+
+        // Link zum TOC in Navigation hinzufügen (nur hier wird gefiltert)
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + uniqueId;
+        a.textContent = filteredText; // Nur im Menü gefiltert, Überschrift bleibt unverändert
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      // Floating-Menü Toggle
+      const menuToggle = document.getElementById('floating-menu-toggle');
+      const tocListElement = document.getElementById('toc-list');
+
+      if (menuToggle && tocListElement) {
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          tocListElement.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+
+        // Schließe Menü beim Klick außerhalb
+        document.addEventListener('click', function(e) {
+          if (!tocListElement.contains(e.target) && !menuToggle.contains(e.target)) {
+            tocListElement.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        });
+
+        // Schließe Menü beim Klick auf einen Link
+        tocListElement.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A') {
+            tocListElement.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

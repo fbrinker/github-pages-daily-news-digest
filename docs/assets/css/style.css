@@ -28,6 +28,17 @@ body {
     letter-spacing: 1px;
   }
 
+  header h1 a {
+    color: #222;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  header h1 a:hover {
+    color: #000;
+    opacity: 0.8;
+  }
+
   header p {
     font-style: italic;
     color: #555;
@@ -62,6 +73,107 @@ body {
 
   nav a:hover {
     border-bottom: 2px solid #000;
+  }
+
+  /* ===== Floating Navigation ===== */
+  .floating-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1rem;
+    pointer-events: none;
+  }
+
+  /* ===== Floating Menu Toggle Button ===== */
+  .floating-menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: #f8f7f3;
+    border: 2px solid #222;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 0.9rem;
+    color: #222;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .floating-menu-toggle:hover {
+    background: #222;
+    color: #f8f7f3;
+  }
+
+  .floating-menu-toggle.active {
+    background: #222;
+    color: #f8f7f3;
+  }
+
+  .floating-menu-toggle .toggle-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  .floating-menu-toggle.active .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* ===== TOC List (Dropdown) ===== */
+  .floating-nav .toc-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 250px;
+    max-width: 400px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: #f8f7f3;
+    border: 2px solid #222;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    pointer-events: auto;
+  }
+
+  .floating-nav .toc-list.active {
+    display: block;
+  }
+
+  .floating-nav .toc-list li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .floating-nav .toc-list a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #222;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: normal;
+    text-transform: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .floating-nav .toc-list a:hover {
+    background: #222;
+    color: #f8f7f3;
+    border-bottom-color: transparent;
+  }
+
+  .floating-nav .toc-list li:last-child a {
+    border-bottom: none;
   }
 
   /* ===== Hauptinhalt ===== */
@@ -108,8 +220,35 @@ body {
     margin-bottom: 0.3rem;
   }
 
+  article h3 a {
+    color: #222;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  article h3 a:hover {
+    color: #000;
+    border-bottom-color: #000;
+  }
+
   article p {
     margin-top: 0;
+  }
+
+  article .read-more {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-style: italic;
+    white-space: nowrap;
+    border-bottom: 1px dotted #aaa;
+    transition: all 0.2s ease;
+  }
+
+  article .read-more:hover {
+    color: #000;
+    border-bottom-color: #000;
   }
 
   /* ===== Linklisten ===== */
@@ -193,6 +332,59 @@ body {
     font-family: "Georgia", "Times New Roman", serif;
   }
 
+  /* ===== Post-Seiten ===== */
+  .post-content {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #000;
+  }
+
+  .post-header h1 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .post-header time {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+  }
+
+
+  .post-body {
+    margin-top: 2rem;
+  }
+
+  .post-body h3 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    scroll-margin-top: 100px; /* Offset für sticky nav */
+  }
+
+  .post-body h3:first-of-type {
+    margin-top: 0;
+  }
+
+  .post-body p {
+    text-align: justify;
+    margin: 0.8rem 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
   /* ===== Responsive Design ===== */
   @media (max-width: 960px) {
     main {
@@ -202,6 +394,28 @@ body {
     nav a {
       display: inline-block;
       margin: 0.3rem 0.7rem;
+    }
+
+    .post-content {
+      padding: 0 1rem;
+    }
+  }
+
+  /* ===== Mobile Anpassungen ===== */
+  @media (max-width: 768px) {
+    .floating-nav {
+      padding: 0.5rem;
+    }
+
+    .floating-menu-toggle {
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .floating-nav .toc-list {
+      min-width: calc(100vw - 2rem);
+      max-width: calc(100vw - 2rem);
+      right: 0.5rem;
     }
   }
 

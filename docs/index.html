@@ -2,25 +2,14 @@
 layout: default
 ---
 
-  {% assign categories = "politik, wirtschaft, technologie, wissenschaft" | split: ", " %}
-  {% for cat in categories %}
-    {% assign posts_in_cat = site.posts | where_exp: "post", "post.categories contains cat" %}
-    {% if posts_in_cat.size > 0 %}
-      <section id="{{ cat }}">
-        <h2>{{ cat | capitalize }}</h2>
+  {% assign recent_posts = site.posts | limit: 15 %}
 
-        {% for post in posts_in_cat %}
-          <article>
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content | markdownify }}</p>
-          </article>
-        {% endfor %}
-
-        <div class="back-to-top"><a href="#top">↑ Zurück nach oben</a></div>
-      </section>
-
-      {% if forloop.index == 1 %}
-        {% include pic-of-the-day.html %}
-      {% endif %}
-    {% endif %}
+  {% for post in recent_posts %}
+    <article>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      {% assign preview = post.content | markdownify | strip_html | truncate: 300 %}
+      <p>{{ preview }} <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a></p>
+    </article>
   {% endfor %}
+
+  {% include pic-of-the-day.html %}

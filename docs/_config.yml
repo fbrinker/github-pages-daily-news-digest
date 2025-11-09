@@ -10,6 +10,10 @@ url: https://fbrinker.github.io
 theme: null
 
 markdown: kramdown
+
+# Zeige auch Posts mit zukünftigen Daten an
+future: true
+
 collections:
   posts:
     output: true
@@ -18,4 +22,4 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "default"
+      layout: "post"
