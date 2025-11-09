@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title: "Daily News Digest - 2025-11-08"
 date: 2025-11-08
-categories: news digest
+categories: [politik, wirtschaft, technologie, wissenschaft]
 ---
 
 ### 🔬 Wissenschaft & Forschung

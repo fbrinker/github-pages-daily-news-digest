@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+  {% assign categories = "politik, wirtschaft, technologie, wissenschaft" | split: ", " %}
+  {% for cat in categories %}
+    {% assign posts_in_cat = site.posts | where_exp: "post", "post.categories contains cat" %}
+    {% if posts_in_cat.size > 0 %}
+      <section id="{{ cat }}">
+        <h2>{{ cat | capitalize }}</h2>
+
+        {% for post in posts_in_cat %}
+          <article>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content | markdownify }}</p>
+          </article>
+        {% endfor %}
+
+        <div class="back-to-top"><a href="#top">↑ Zurück nach oben</a></div>
+      </section>
+
+      {% if forloop.index == 1 %}
+        {% include pic-of-the-day.html %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}

@@ -1,0 +1,225 @@
+/* ===== Grundlayout ===== */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fließtext ohne Serifen */
+    background-color: #fdfcf8;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 0.95rem; /* etwas kleinerer Grundtext */
+    scroll-behavior: smooth;
+  }
+
+  /* ===== Kopfbereich ===== */
+  header {
+    text-align: center;
+    padding: 2rem 1rem 0.5rem;
+    border-bottom: 3px solid #000;
+    background-color: #fdfcf8;
+    position: relative;
+    z-index: 2;
+  }
+
+  header h1 {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  header p {
+    font-style: italic;
+    color: #555;
+    margin: 0.4rem 0 1.2rem;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  /* ===== Sticky Navigation ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    text-align: center;
+    background: #f8f7f3;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 0.6rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  nav a {
+    color: #222;
+    text-decoration: none;
+    margin: 0 0.8rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  nav a:hover {
+    border-bottom: 2px solid #000;
+  }
+
+  /* ===== Hauptinhalt ===== */
+  main {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px dotted #aaa;
+    padding-bottom: 1.2rem;
+  }
+
+  section:last-of-type {
+    border: none;
+  }
+
+  section h2 {
+    border-left: 4px solid #000;
+    padding-left: 0.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  section p {
+    text-align: justify;
+    margin: 0.4rem 0 0.8rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem; /* kleinerer Fließtext */
+  }
+
+  /* ===== Artikel ===== */
+  article {
+    margin-bottom: 1.2rem;
+  }
+
+  article h3 {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  article p {
+    margin-top: 0;
+  }
+
+  /* ===== Linklisten ===== */
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.2rem 0 0;
+  }
+
+  ul li {
+    font-size: 0.85rem; /* kompaktere Links */
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  ul li a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #aaa;
+    transition: all 0.2s ease;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  ul li a:hover {
+    color: #000;
+    border-bottom-color: #000;
+  }
+
+  /* ===== Zurück-nach-oben ===== */
+  .back-to-top {
+    text-align: right;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  .back-to-top a {
+    text-decoration: none;
+    color: #555;
+    border-bottom: 1px dotted #aaa;
+    transition: color 0.2s;
+  }
+
+  .back-to-top a:hover {
+    color: #000;
+  }
+
+  /* ===== Bild des Tages ===== */
+  .bild-des-tages {
+    text-align: center;
+    margin: 3rem 0;
+    padding: 1.5rem 1rem;
+    background-color: #f8f7f3;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .bild-des-tages img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .bild-des-tages figcaption {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  /* ===== Fußbereich ===== */
+  footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    border-top: 1px solid #ccc;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+
+  /* ===== Responsive Design ===== */
+  @media (max-width: 960px) {
+    main {
+      padding: 0 1rem;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0.3rem 0.7rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+
+    section h2 {
+      font-size: 1.2rem;
+    }
+
+    body {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    article h3 {
+      font-size: 1rem;
+    }
+  }

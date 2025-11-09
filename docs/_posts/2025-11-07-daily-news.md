@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title: "Daily News Digest - 2025-11-07"
 date: 2025-11-07
-categories: news digest
+categories: [politik, wirtschaft, technologie, wissenschaft]
 ---
 
 ### 🧑‍💻 Softwareentwicklung & IT-Sicherheit

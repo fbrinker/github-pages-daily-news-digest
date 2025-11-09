@@ -1,18 +1,21 @@
 title: Daily News Digest
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   A curated daily news digest featuring the most important stories and
   articles from around the web, delivered fresh every day.
+
 domain: fbrinker.github.io
-baseurl: /github-pages-daily-news-digest/ # the subpath of your site, e.g. /blog
-url: https://fbrinker.github.io # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+baseurl: /github-pages-daily-news-digest/
+url: https://fbrinker.github.io
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
+theme: null
 
-# Show future-dated posts
-future: true
-
+markdown: kramdown
+collections:
+  posts:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
