@@ -11,8 +11,8 @@ theme: null
 
 markdown: kramdown
 
-# Zeige auch Posts mit zukünftigen Daten an
-future: true
+# Show posts with future dates
+future: false
 
 collections:
   posts:

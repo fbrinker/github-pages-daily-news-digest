@@ -1,439 +1,458 @@
-/* ===== Grundlayout ===== */
+/* ===== CSS Variables ===== */
+:root {
+  /* Colors */
+  --color-primary: #222;
+  --color-dark: #000;
+  --color-bg-main: #fdfcf8;
+  --color-bg-alt: #f8f7f3;
+  --color-text-light: #555;
+  --color-text-lighter: #666;
+  --color-text-lightest: #777;
+  --color-border-light: #ddd;
+  --color-border-medium: #ccc;
+  --color-border-dark: #aaa;
+
+  /* Fonts */
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Transitions */
+  --transition-default: all 0.2s ease;
+  --transition-slow: all 0.3s ease;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Sizes */
+  --max-width: 960px;
+}
+
+/* ===== Base Layout ===== */
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fließtext ohne Serifen */
-    background-color: #fdfcf8;
-    color: #222;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    font-size: 0.95rem; /* etwas kleinerer Grundtext */
-    scroll-behavior: smooth;
-  }
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-main);
+  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  scroll-behavior: smooth;
+}
 
-  /* ===== Kopfbereich ===== */
-  header {
-    text-align: center;
-    padding: 2rem 1rem 0.5rem;
-    border-bottom: 3px solid #000;
-    background-color: #fdfcf8;
-    position: relative;
-    z-index: 2;
-  }
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xs);
+  border-bottom: 3px solid var(--color-dark);
+  background-color: var(--color-bg-main);
+  position: relative;
+  z-index: 2;
+}
 
-  header h1 {
-    margin: 0;
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 2.4rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+header h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-  header h1 a {
-    color: #222;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
+header h1 a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-default);
+}
 
-  header h1 a:hover {
-    color: #000;
-    opacity: 0.8;
-  }
+header h1 a:hover {
+  color: var(--color-dark);
+  opacity: 0.8;
+}
 
-  header p {
-    font-style: italic;
-    color: #555;
-    margin: 0.4rem 0 1.2rem;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
+header p {
+  font-style: italic;
+  color: var(--color-text-light);
+  margin: 0.4rem 0 1.2rem;
+  font-family: var(--font-serif);
+}
 
-  /* ===== Sticky Navigation ===== */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    text-align: center;
-    background: #f8f7f3;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 0.6rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    font-family: "Georgia", "Times New Roman", serif;
+/* ===== Sticky Navigation ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: center;
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border-medium);
+  border-bottom: 1px solid var(--color-border-medium);
+  padding: 0.6rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-family: var(--font-serif);
+}
+
+nav a {
+  color: var(--color-primary);
+  text-decoration: none;
+  margin: 0 0.8rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-default);
+}
+
+nav a:hover {
+  border-bottom-color: var(--color-dark);
+}
+
+/* ===== Floating Navigation ===== */
+.floating-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: var(--spacing-sm);
+  pointer-events: none;
+}
+
+/* ===== Floating Menu Toggle Button ===== */
+.floating-menu-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.6rem var(--spacing-sm);
+  background: var(--color-bg-alt);
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  transition: var(--transition-default);
+  pointer-events: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.floating-menu-toggle:hover,
+.floating-menu-toggle.active {
+  background: var(--color-primary);
+  color: var(--color-bg-alt);
+}
+
+.floating-menu-toggle .toggle-icon {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.floating-menu-toggle.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* ===== TOC List (Dropdown) ===== */
+.floating-nav .toc-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  right: 0;
+  min-width: 250px;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--color-bg-alt);
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  list-style: none;
+  padding: var(--spacing-xs) 0;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  pointer-events: auto;
+}
+
+.floating-nav .toc-list.active {
+  display: block;
+}
+
+.floating-nav .toc-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.floating-nav .toc-list a {
+  display: block;
+  padding: 0.6rem var(--spacing-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: normal;
+  text-transform: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-default);
+  font-family: var(--font-sans);
+}
+
+.floating-nav .toc-list a:hover {
+  background: var(--color-primary);
+  color: var(--color-bg-alt);
+  border-bottom-color: transparent;
+}
+
+.floating-nav .toc-list li:last-child a {
+  border-bottom: none;
+}
+
+/* ===== Main Content ===== */
+main,
+.post-content {
+  max-width: var(--max-width);
+  margin: var(--spacing-lg) auto;
+  padding: 0 var(--spacing-md);
+}
+
+section {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px dotted var(--color-border-dark);
+  padding-bottom: 1.2rem;
+}
+
+section:last-of-type {
+  border: none;
+}
+
+section h2 {
+  border-left: 4px solid var(--color-dark);
+  padding-left: 0.6rem;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  font-family: var(--font-serif);
+}
+
+section p {
+  text-align: justify;
+  margin: 0.4rem 0 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+/* ===== Articles ===== */
+article {
+  margin-bottom: 1.2rem;
+}
+
+article h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+article h3 a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-default);
+}
+
+article h3 a:hover {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-dark);
+}
+
+article p {
+  margin-top: 0;
+}
+
+article .read-more {
+  color: var(--color-text-lighter);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-style: italic;
+  white-space: nowrap;
+  border-bottom: 1px dotted var(--color-border-dark);
+  transition: var(--transition-default);
+}
+
+article .read-more:hover {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-dark);
+}
+
+/* ===== Link Lists ===== */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.2rem 0 0;
+}
+
+ul li {
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+ul li a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border-dark);
+  transition: var(--transition-default);
+  font-family: var(--font-serif);
+}
+
+ul li a:hover {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-dark);
+}
+
+/* ===== Back to Top ===== */
+.back-to-top {
+  text-align: right;
+  font-size: 0.8rem;
+  margin-top: var(--spacing-sm);
+  font-family: var(--font-serif);
+}
+
+.back-to-top a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  border-bottom: 1px dotted var(--color-border-dark);
+  transition: color 0.2s;
+}
+
+.back-to-top a:hover {
+  color: var(--color-dark);
+}
+
+/* ===== Picture of the Day ===== */
+.bild-des-tages {
+  text-align: center;
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-md) var(--spacing-sm);
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.bild-des-tages img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border-medium);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bild-des-tages figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-lightest);
+  border-top: 1px solid var(--color-border-medium);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  font-family: var(--font-serif);
+}
+
+/* ===== Post Pages ===== */
+.post-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-dark);
+}
+
+.post-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.post-header time {
+  font-size: 0.9rem;
+  color: var(--color-text-lighter);
+  font-style: italic;
+}
+
+.post-body {
+  margin-top: var(--spacing-lg);
+}
+
+.post-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  scroll-margin-top: 100px;
+}
+
+.post-body h3:first-of-type {
+  margin-top: 0;
+}
+
+.post-body p {
+  text-align: justify;
+  margin: 0.8rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 960px) {
+  main,
+  .post-content {
+    padding: 0 var(--spacing-sm);
   }
 
   nav a {
-    color: #222;
-    text-decoration: none;
-    margin: 0 0.8rem;
-    font-weight: bold;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease;
+    display: inline-block;
+    margin: 0.3rem 0.7rem;
   }
+}
 
-  nav a:hover {
-    border-bottom: 2px solid #000;
-  }
-
-  /* ===== Floating Navigation ===== */
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 768px) {
   .floating-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 1rem;
-    pointer-events: none;
+    padding: var(--spacing-xs);
   }
 
-  /* ===== Floating Menu Toggle Button ===== */
   .floating-menu-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    background: #f8f7f3;
-    border: 2px solid #222;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 0.9rem;
-    color: #222;
-    transition: all 0.2s ease;
-    pointer-events: auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  .floating-menu-toggle:hover {
-    background: #222;
-    color: #f8f7f3;
-  }
-
-  .floating-menu-toggle.active {
-    background: #222;
-    color: #f8f7f3;
-  }
-
-  .floating-menu-toggle .toggle-icon {
-    font-size: 0.7rem;
-    transition: transform 0.3s ease;
-  }
-
-  .floating-menu-toggle.active .toggle-icon {
-    transform: rotate(180deg);
-  }
-
-  /* ===== TOC List (Dropdown) ===== */
-  .floating-nav .toc-list {
-    display: none;
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    min-width: 250px;
-    max-width: 400px;
-    max-height: 70vh;
-    overflow-y: auto;
-    background: #f8f7f3;
-    border: 2px solid #222;
-    border-radius: 4px;
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    pointer-events: auto;
-  }
-
-  .floating-nav .toc-list.active {
-    display: block;
-  }
-
-  .floating-nav .toc-list li {
-    margin: 0;
-    padding: 0;
-  }
-
-  .floating-nav .toc-list a {
-    display: block;
-    padding: 0.6rem 1rem;
-    color: #222;
-    text-decoration: none;
     font-size: 0.85rem;
-    font-weight: normal;
-    text-transform: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: var(--spacing-xs) 0.8rem;
   }
 
-  .floating-nav .toc-list a:hover {
-    background: #222;
-    color: #f8f7f3;
-    border-bottom-color: transparent;
+  .floating-nav .toc-list {
+    min-width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+    right: var(--spacing-xs);
   }
+}
 
-  .floating-nav .toc-list li:last-child a {
-    border-bottom: none;
-  }
-
-  /* ===== Hauptinhalt ===== */
-  main {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-  }
-
-  section {
-    margin-bottom: 2.5rem;
-    border-bottom: 1px dotted #aaa;
-    padding-bottom: 1.2rem;
-  }
-
-  section:last-of-type {
-    border: none;
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
   }
 
   section h2 {
-    border-left: 4px solid #000;
-    padding-left: 0.6rem;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 1.2rem;
   }
 
-  section p {
-    text-align: justify;
-    margin: 0.4rem 0 0.8rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.9rem; /* kleinerer Fließtext */
-  }
-
-  /* ===== Artikel ===== */
-  article {
-    margin-bottom: 1.2rem;
+  body {
+    font-size: 0.9rem;
   }
 
   article h3 {
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
+    font-size: 1rem;
   }
-
-  article h3 a {
-    color: #222;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease;
-  }
-
-  article h3 a:hover {
-    color: #000;
-    border-bottom-color: #000;
-  }
-
-  article p {
-    margin-top: 0;
-  }
-
-  article .read-more {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.9em;
-    font-style: italic;
-    white-space: nowrap;
-    border-bottom: 1px dotted #aaa;
-    transition: all 0.2s ease;
-  }
-
-  article .read-more:hover {
-    color: #000;
-    border-bottom-color: #000;
-  }
-
-  /* ===== Linklisten ===== */
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0.2rem 0 0;
-  }
-
-  ul li {
-    font-size: 0.85rem; /* kompaktere Links */
-    margin-bottom: 0.3rem;
-    line-height: 1.4;
-  }
-
-  ul li a {
-    color: #333;
-    text-decoration: none;
-    border-bottom: 1px solid #aaa;
-    transition: all 0.2s ease;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
-
-  ul li a:hover {
-    color: #000;
-    border-bottom-color: #000;
-  }
-
-  /* ===== Zurück-nach-oben ===== */
-  .back-to-top {
-    text-align: right;
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
-
-  .back-to-top a {
-    text-decoration: none;
-    color: #555;
-    border-bottom: 1px dotted #aaa;
-    transition: color 0.2s;
-  }
-
-  .back-to-top a:hover {
-    color: #000;
-  }
-
-  /* ===== Bild des Tages ===== */
-  .bild-des-tages {
-    text-align: center;
-    margin: 3rem 0;
-    padding: 1.5rem 1rem;
-    background-color: #f8f7f3;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .bild-des-tages img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  .bild-des-tages figcaption {
-    font-size: 0.85rem;
-    color: #555;
-    margin-top: 0.5rem;
-    font-style: italic;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
-
-  /* ===== Fußbereich ===== */
-  footer {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #777;
-    border-top: 1px solid #ccc;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
-
-  /* ===== Post-Seiten ===== */
-  .post-content {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-  }
-
-  .post-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #000;
-  }
-
-  .post-header h1 {
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    text-transform: none;
-    letter-spacing: normal;
-  }
-
-  .post-header time {
-    font-size: 0.9rem;
-    color: #666;
-    font-style: italic;
-  }
-
-
-  .post-body {
-    margin-top: 2rem;
-  }
-
-  .post-body h3 {
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 1.4rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    scroll-margin-top: 100px; /* Offset für sticky nav */
-  }
-
-  .post-body h3:first-of-type {
-    margin-top: 0;
-  }
-
-  .post-body p {
-    text-align: justify;
-    margin: 0.8rem 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  /* ===== Responsive Design ===== */
-  @media (max-width: 960px) {
-    main {
-      padding: 0 1rem;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 0.3rem 0.7rem;
-    }
-
-    .post-content {
-      padding: 0 1rem;
-    }
-  }
-
-  /* ===== Mobile Anpassungen ===== */
-  @media (max-width: 768px) {
-    .floating-nav {
-      padding: 0.5rem;
-    }
-
-    .floating-menu-toggle {
-      font-size: 0.85rem;
-      padding: 0.5rem 0.8rem;
-    }
-
-    .floating-nav .toc-list {
-      min-width: calc(100vw - 2rem);
-      max-width: calc(100vw - 2rem);
-      right: 0.5rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 2rem;
-    }
-
-    section h2 {
-      font-size: 1.2rem;
-    }
-
-    body {
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    article h3 {
-      font-size: 1rem;
-    }
-  }
+}
