@@ -33,7 +33,7 @@
   {% include footer.html %}
 
   <script>
-    // Inhaltsverzeichnis automatisch generieren und in Navigation einfügen
+    // Automatically generate table of contents and insert into navigation
     document.addEventListener('DOMContentLoaded', function() {
       const postBody = document.querySelector('.post-body');
       if (!postBody) return;
@@ -42,24 +42,30 @@
       const tocList = document.getElementById('toc-list');
 
       if (headings.length === 0) {
-        // Keine Überschriften gefunden, Navigation ausblenden
+        // No headings found, hide navigation
         const floatingNav = document.getElementById('floating-nav');
         if (floatingNav) floatingNav.style.display = 'none';
         return;
       }
 
-      // Funktion zum Filtern: Nur erlaubte Zeichen behalten
+      // Function to filter: retain only allowed characters
       function filterAllowedChars(text) {
-        // Erlaubt: Buchstaben (inkl. Umlaute), Zahlen, Leerzeichen, gängige Satzzeichen
-        // Pattern erlaubt Unicode-Buchstaben, Zahlen, Leerzeichen und Satzzeichen
+        // Allowed: letters (incl. umlauts), numbers, spaces, common punctuation
+        // Pattern allows Unicode letters, numbers, spaces, and punctuation
         return text.replace(/[^\p{L}\p{N}\s\-.,:;!?()&]/gu, '').trim();
       }
 
+      const readingTimeRegex = /\s*\((?:\d+min(?:\s+\d+s)?|\d+s)\)$/;
+
       headings.forEach(function(heading) {
-        // ID für die Überschrift generieren
-        let text = heading.textContent.trim();
-        // Nur erlaubte Zeichen behalten (Buchstaben, Zahlen, Leerzeichen, Satzzeichen)
-        const filteredText = filterAllowedChars(text);
+        let originalText = heading.textContent.trim();
+        let tocText = originalText.replace(readingTimeRegex, '').trim();
+
+        // Wrap reading time in a span for styling
+        heading.innerHTML = originalText.replace(readingTimeRegex, '<span class="reading-time">$&</span>');
+
+        // Generate ID for the heading (without reading time)
+        const filteredText = filterAllowedChars(tocText);
 
         let id = filteredText.toLowerCase()
           .replace(/\s+/g, '-')
@@ -68,7 +74,7 @@
           .replace(/--+/g, '-')
           .replace(/^-|-$/g, '');
 
-        // Eindeutige ID sicherstellen
+        // Ensure unique ID
         let uniqueId = id;
         let counter = 1;
         while (document.getElementById(uniqueId)) {
@@ -78,16 +84,16 @@
 
         heading.id = uniqueId;
 
-        // Link zum TOC in Navigation hinzufügen (nur hier wird gefiltert)
+        // Add link to TOC in navigation (only filtered here)
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = '#' + uniqueId;
-        a.textContent = filteredText; // Nur im Menü gefiltert, Überschrift bleibt unverändert
+        a.textContent = filteredText;
         li.appendChild(a);
         tocList.appendChild(li);
       });
 
-      // Floating-Menü Toggle
+      // Floating menu toggle
       const menuToggle = document.getElementById('floating-menu-toggle');
       const tocListElement = document.getElementById('toc-list');
 
@@ -98,7 +104,7 @@
           menuToggle.classList.toggle('active');
         });
 
-        // Schließe Menü beim Klick außerhalb
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
           if (!tocListElement.contains(e.target) && !menuToggle.contains(e.target)) {
             tocListElement.classList.remove('active');
@@ -106,7 +112,7 @@
           }
         });
 
-        // Schließe Menü beim Klick auf einen Link
+        // Close menu when clicking on a link
         tocListElement.addEventListener('click', function(e) {
           if (e.target.tagName === 'A') {
             tocListElement.classList.remove('active');

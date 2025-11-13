@@ -400,6 +400,12 @@ footer {
   margin-top: 0;
 }
 
+.post-body h3 .reading-time {
+  font-size: 0.9rem;
+  color: var(--color-text-lighter);
+  font-weight: normal;
+}
+
 .post-body p {
   text-align: justify;
   margin: 0.8rem 0;
