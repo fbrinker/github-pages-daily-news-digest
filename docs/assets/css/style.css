@@ -115,7 +115,7 @@ nav a:hover {
   z-index: 100;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-end; /* Reverted from flex-start */
   padding: var(--spacing-sm);
   pointer-events: none;
 }
@@ -158,7 +158,7 @@ nav a:hover {
   display: none;
   position: absolute;
   top: calc(100% + var(--spacing-xs));
-  right: 0;
+  right: 0; /* Reverted from left: 0 */
   min-width: 250px;
   max-width: 400px;
   max-height: 70vh;
@@ -414,6 +414,18 @@ footer {
   line-height: 1.7;
 }
 
+.post-body a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-border-dark);
+  transition: var(--transition-default);
+}
+
+.post-body a:hover {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-dark);
+}
+
 /* ===== Responsive Design ===== */
 @media (max-width: 960px) {
   main,
@@ -441,7 +453,7 @@ footer {
   .floating-nav .toc-list {
     min-width: calc(100vw - 2rem);
     max-width: calc(100vw - 2rem);
-    right: var(--spacing-xs);
+    right: var(--spacing-xs); /* Reverted from left */
   }
 }
 
