@@ -281,6 +281,27 @@ article .read-more:hover {
   border-bottom-color: var(--color-dark);
 }
 
+.preview-container {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.preview-image {
+  flex: 0 0 150px; /* Do not grow, do not shrink, base width of 150px */
+}
+
+.preview-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-light);
+}
+
+.preview-text {
+  flex: 1;
+}
+
 /* ===== Link Lists ===== */
 ul {
   list-style: none;

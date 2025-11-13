@@ -7,8 +7,17 @@ layout: default
   {% for post in recent_posts %}
     <article>
       <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      {% assign preview = post.content | markdownify | replace: '<h3[^>]*>.*?</h3>', '' | strip_html | truncate: 300 %}
-      <p>{{ preview }} <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a></p>
+      <div class="preview-container">
+        {% if post.iotd_bing_preview_url and post.iotd_bing_preview_url != "" %}
+          <div class="preview-image">
+            <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.title }} preview">
+          </div>
+        {% endif %}
+        <div class="preview-text">
+          {% assign preview = post.content | markdownify | replace: '<h3[^>]*>.*?</h3>', '' | strip_html | truncate: 300 %}
+          <p>{{ preview }} <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a></p>
+        </div>
+      </div>
     </article>
   {% endfor %}
 
