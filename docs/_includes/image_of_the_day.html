@@ -1,0 +1,13 @@
+{% if include.url and include.url != "" %}
+<figure class="bild-des-tages">
+  {% if include.headline %}
+    <h2>{{ include.headline }}</h2>
+  {% endif %}
+  <img src="{{ include.url }}" alt="{{ include.description | default: 'Image of the day' }}">
+  {% if include.description and include.description != "" %}
+  <figcaption>
+    {{ include.description }}
+  </figcaption>
+  {% endif %}
+</figure>
+{% endif %}

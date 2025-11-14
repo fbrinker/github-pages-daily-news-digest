@@ -34,7 +34,15 @@
       </header>
 
       <div class="post-body">
-        {{ content }}
+        {%- capture bing_image -%}
+          {% include image_of_the_day.html url=page.iotd_bing_url description=page.iotd_bing_description %}
+        {%- endcapture -%}
+
+        {%- capture nasa_image -%}
+          {% include image_of_the_day.html url=page.iotd_nasa_url description=page.iotd_nasa_description %}
+        {%- endcapture -%}
+
+        {{ page.content | replace: "<bing>", bing_image | replace: "<nasa>", nasa_image | markdownify }}
       </div>
     </article>
   </main>
@@ -77,11 +85,9 @@
         const filteredText = filterAllowedChars(tocText);
 
         let id = filteredText.toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/&/g, 'und')
-          .replace(/[,.:!?()]/g, '')
-          .replace(/--+/g, '-')
-          .replace(/^-|-$/g, '');
+          .replace(/[\s,.:!?()]+/g, '-') // Replace spaces and punctuation with single hyphens
+          .replace(/&/g, 'und')         // Replace '&' with 'und'
+          .replace(/^-+|-+$/g, '');     // Remove leading/trailing hyphens
 
         // Ensure unique ID
         let uniqueId = id;

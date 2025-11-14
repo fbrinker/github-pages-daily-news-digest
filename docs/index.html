@@ -17,14 +17,36 @@ layout: default
           <span>&nbsp;·&nbsp;Ungefähre Lesezeit: {{ minutes }} min</span>
         {% endif %}
       </div>
+      {% if post.iotd_bing_preview_url and post.iotd_bing_preview_url != "" %}
+      <div class="preview-image">
+        <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.title }} preview">
+      </div>
+    {% endif %}
       <div class="preview-container">
-        {% if post.iotd_bing_preview_url and post.iotd_bing_preview_url != "" %}
-          <div class="preview-image">
-            <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.title }} preview">
-          </div>
-        {% endif %}
         <div class="preview-text">
-          {% assign preview = post.excerpt | strip_html | truncate: 300 %}
+          {% assign content = post.content %}
+          {% assign content_parts = content | split: '<h3' %}
+          {% assign content_without_h3 = content_parts.first %}
+          {% for part in content_parts offset:1 %}
+            {% assign sub_parts = part | split: '</h3>' %}
+            {% if sub_parts.size > 1 %}
+              {% assign content_without_h3 = content_without_h3 | append: sub_parts.last %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign text_after_strip = content_without_h3 | strip_html %}
+          {% assign bracket_parts = text_after_strip | split: '[' %}
+          {% assign text_without_brackets = bracket_parts.first %}
+          {% for part in bracket_parts offset:1 %}
+            {% assign sub_parts = part | split: ']' %}
+            {% if sub_parts.size > 1 %}
+              {% assign text_without_brackets = text_without_brackets | append: sub_parts.last %}
+            {% else %}
+              {% assign text_without_brackets = text_without_brackets | append: '[' | append: part %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign preview = text_without_brackets | truncate: 600 %}
           <p>{{ preview }} <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a></p>
         </div>
       </div>

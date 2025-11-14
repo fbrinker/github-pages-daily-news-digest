@@ -1,6 +1,11 @@
 ---
 title: News 2025-11-14
 date: 2025-11-14
+iotd_bing_url: https://www.bing.com//th?id=OHR.ManateeBaby_DE-DE5900789035_800x480.jpg&rf=LaDigue_800x480.jpg&pid=hp
+iotd_bing_preview_url: https://www.bing.com//th?id=OHR.ManateeBaby_DE-DE5900789035_240x320.jpg&rf=LaDigue_240x320.jpg&pid=hp
+iotd_bing_description: "Schwimmend durch Florida: Rundschwanzseekuh mit Kalb, Crystal River, Florida, USA (© Gregory Sweeney/Getty Images)"
+iotd_nasa_url: https://apod.nasa.gov/apod/image/2511/DSC07080-Edit1024.jpeg
+iotd_nasa_description: "Florida Northern Lights: Northern lights have come to Florida skies. In fact, the brilliant streak of a Northern Taurid meteor flashes through the starry night sky above the beach in this sea and skyscape, captured from Shired Island, Florida on November 11. Meteors from the annual Northern Taurid meteor shower are expected this time of year. But the digital camera exposure also records the shimmering glow of aurora, a phenomenon more often seen from our fair planet's higher geographical latitudes. Also known as aurora borealis, these northern lights are part of recent, wide spread auroral activity caused by strong geomagnetic storms. In the last few days, stormy spaceweather has been triggered by multiple Earth impacting coronal mass ejections and intense solar activity. (Samil Cabrera)"
 ---
 
 ### Künstliche Intelligenz & Robotics (1min 34s)
