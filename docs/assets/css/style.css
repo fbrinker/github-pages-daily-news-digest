@@ -495,3 +495,18 @@ footer {
     font-size: 1rem;
   }
 }
+
+.post-header .total-reading-time {
+  font-size: 0.9rem;
+  color: var(--color-text-lighter);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: var(--color-text-lighter);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
