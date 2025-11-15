@@ -35,14 +35,16 @@
 
       <div class="post-body">
         {%- capture bing_image -%}
-          {% include image_of_the_day.html url=page.iotd_bing_url description=page.iotd_bing_description %}
+          {% include image_of_the_day.html url=page.iotd_bing_url headline=page.iotd_bing_title description=page.iotd_bing_description %}
         {%- endcapture -%}
 
         {%- capture nasa_image -%}
-          {% include image_of_the_day.html url=page.iotd_nasa_url description=page.iotd_nasa_description %}
+          {% include image_of_the_day.html url=page.iotd_nasa_url headline=page.iotd_nasa_title description=page.iotd_nasa_description %}
         {%- endcapture -%}
 
-        {{ page.content | replace: "<bing>", bing_image | replace: "<nasa>", nasa_image | markdownify }}
+        {{ bing_image }}
+        {{ page.content }}
+        {{ nasa_image }}
       </div>
     </article>
   </main>

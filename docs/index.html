@@ -19,7 +19,7 @@ layout: default
       </div>
       {% if post.iotd_bing_preview_url and post.iotd_bing_preview_url != "" %}
       <div class="preview-image">
-        <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.title }} preview">
+        <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.iotd_bing_title }} preview">
       </div>
     {% endif %}
       <div class="preview-container">
@@ -52,5 +52,3 @@ layout: default
       </div>
     </article>
   {% endfor %}
-
-  {% include pic-of-the-day.html %}
