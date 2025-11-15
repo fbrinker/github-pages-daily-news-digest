@@ -7,6 +7,8 @@ domain: fbrinker.github.io
 baseurl: /github-pages-daily-news-digest/
 url: https://fbrinker.github.io
 
+timezone: Europe/Berlin
+
 theme: null
 
 markdown: kramdown
