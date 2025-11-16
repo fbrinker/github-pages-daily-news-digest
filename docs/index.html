@@ -18,9 +18,11 @@ layout: default
         {% endif %}
       </div>
       {% if post.iotd_bing_preview_url and post.iotd_bing_preview_url != "" %}
-      <div class="preview-image">
-        <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.iotd_bing_title }} preview">
-      </div>
+      <a href="{{ post.url | relative_url }}">
+        <div class="preview-image">
+          <img src="{{ post.iotd_bing_preview_url }}" alt="{{ post.iotd_bing_title }} preview">
+        </div>
+      </a>
     {% endif %}
       <div class="preview-container">
         <div class="preview-text">
